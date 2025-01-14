@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toolbox - LDN Toolbox</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+
+    </style>
+</head>
+<body>
+
+<nav>
+    <div>
+        <a href="./index.html">Home</a>
+        <a href="./toolbox.html">Toolbox</a>
+        <a href="./help.html">Help</a>
+    </div>
+</nav>
+
+<button id="toggle-sidebar">☰ Filter Search</button>
+<div class="sidebar" id="sidebar">
+    <div id="sidebar-content">
+        <h3>Please Filter the Options Below for Your Specific Use</h3>
+        <div class="accordion">
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span class="caret">▶</span>
+                    Scale of the Project
+                </button>
+                <div class="accordion-content">
+                    <label><input type="checkbox" name="scale" value="Global"> Global</label><br>
+                    <label><input type="checkbox" name="scale" value="National"> National</label><br>
+                    <label><input type="checkbox" name="scale" value="Regional"> Regional</label><br>
+                    <label><input type="checkbox" name="scale" value="Local"> Local</label><br>
+                    <label><input type="checkbox" name="scale" value="Other"> Other</label>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span class="caret">▶</span>
+                    ILUP Phase
+                </button>
+                <div class="accordion-content">
+                    <div class="phase-option selectable" data-value="Visioning and target setting">Visioning and target setting</div>
+                    <div class="phase-option selectable" data-value="Description and assessment">Description and assessment</div>
+                    <div class="phase-option selectable" data-value="Monitoring and Evaluation">Monitoring and Evaluation</div>
+                    <div class="phase-option selectable" data-value="Planning">Planning</div>
+                    <div class="phase-option selectable" data-value="Implementation">Implementation</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span class="caret">▶</span>
+                    Tool Group
+                </button>
+                <div class="accordion-content">
+                    <div class="group-option selectable" data-value="Indicator-assessment tool">Indicator-assessment tool</div>
+                    <div class="group-option selectable" data-value="Forward-looking tool">Forward-looking tool</div>
+                    <div class="group-option selectable" data-value="Multi-criteria analysis tool">Multi-criteria analysis tool</div>
+                    <div class="group-option selectable" data-value="Optimization tool">Optimization tool</div>
+                    <div class="group-option selectable" data-value="Rapid-appraisal tool">Rapid-appraisal tool</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span class="caret">▶</span>
+                    Tool Type
+                </button>
+                <div class="accordion-content">
+                    <div class="type-option selectable" data-value="Model / Algorithm">Model / Algorithm</div>
+                    <div class="type-option selectable" data-value="Guideline document">Guideline document</div>
+                    <div class="type-option selectable" data-value="Dataset">Dataset</div>
+                    <div class="type-option selectable" data-value="Questionnaire">Questionnaire</div>
+                    <div class="type-option selectable" data-value="GIS-plugin">GIS-plugin</div>
+                    <div class="type-option selectable" data-value="Browser-based tool">Browser-based tool</div>
+                    <div class="type-option selectable" data-value="Standalone tool">Standalone tool</div>
+                    <div class="type-option selectable" data-value="Training material">Training material</div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    <span class="caret">▶</span>
+                    Use Cases
+                </button>
+                <div class="accordion-content">
+                    <div class="use-case-option selectable" data-value="Land degradation">Land degradation</div>
+                    <div class="use-case-option selectable" data-value="Coastal erosion">Coastal erosion</div>
+                    <div class="use-case-option selectable" data-value="Soil erosion">Soil erosion</div>
+                    <div class="use-case-option selectable" data-value="RUSLE">RUSLE</div>
+                    <div class="use-case-option selectable" data-value="Land cover">Land cover</div>
+                    <div class="use-case-option selectable" data-value="Community action planning">Community action planning</div>
+                    <div class="use-case-option selectable" data-value="Decision support">Decision support</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="content" id="content">
+    <h1>LDN Toolbox</h1>
+    <div class="results-summary" id="results-summary">
+        Showing all tools. Use the filters to refine your search.
+    </div>
+    <div class="tools-list" id="tools-list">
+        <!-- Filtered tools will appear here -->
+    </div>
+</div>
+
+<script>
+    const sidebar = document.getElementById("sidebar");
+    const toggleSidebarButton = document.getElementById("toggle-sidebar");
+    const content = document.getElementById("content");
+
+    toggleSidebarButton.addEventListener("click", () => {
+        sidebar.classList.toggle("hidden");
+        content.classList.toggle("expanded");
+    });
+
+    const accordionHeaders = document.querySelectorAll(".accordion-header");
+    accordionHeaders.forEach(header => {
+        header.addEventListener("click", () => {
+            const content = header.nextElementSibling;
+            const caret = header.querySelector(".caret");
+            content.classList.toggle("show");
+            header.classList.toggle("active");
+            caret.textContent = content.classList.contains("show") ? "▼" : "▶";
+        });
+    });
+
+    const tools = [
+        { 
+            name: "Trends.Earth", 
+            description: "A tool for assessing land degradation and monitoring SDG 15.3.1 targets.",
+            scale: ["Global"], 
+            phase: "Visioning and target setting", 
+            group: "Indicator-assessment tool", 
+            type: "Browser-based tool", 
+            useCase: ["Land degradation"] 
+        },
+        { 
+            name: "QGIS", 
+            description: "An open-source GIS platform for spatial data analysis and visualization.",
+            scale: ["National", "Regional"], 
+            phase: "Planning", 
+            group: "Optimization tool", 
+            type: "GIS-plugin", 
+            useCase: ["Soil erosion", "Decision support"] 
+        },
+        { 
+            name: "WOCAT Apps", 
+            description: "Tools for sustainable land management and monitoring land restoration activities.",
+            scale: ["Local"], 
+            phase: "Monitoring and Evaluation", 
+            group: "Rapid-appraisal tool", 
+            type: "Standalone tool", 
+            useCase: ["Community action planning"] 
+        },
+        { 
+            name: "SEPAL", 
+            description: "A platform for processing satellite data for land-use monitoring and planning.",
+            scale: ["Global"], 
+            phase: "Implementation", 
+            group: "Forward-looking tool", 
+            type: "Browser-based tool", 
+            useCase: ["Land cover"] 
+        },
+        { 
+            name: "Kobo Toolbox", 
+            description: "A data collection tool for field surveys and monitoring projects.",
+            scale: ["Local"], 
+            phase: "Planning", 
+            group: "Multi-criteria analysis tool", 
+            type: "Standalone tool", 
+            useCase: ["RUSLE", "Coastal erosion"] 
+        },
+        { 
+            name: "ESRI Landcover", 
+            description: "A global dataset for land cover mapping and analysis.",
+            scale: ["Global"], 
+            phase: "Monitoring and Evaluation", 
+            group: "Dataset", 
+            type: "Dataset", 
+            useCase: ["Land cover"] 
+        }
+    ];
+
+    let selectedFilters = {
+        scale: [],
+        phase: [],
+        group: [],
+        type: [],
+        useCase: []
+    };
+
+    function updateFilters(category, value) {
+        if (selectedFilters[category].includes(value)) {
+            selectedFilters[category] = selectedFilters[category].filter(item => item !== value);
+        } else {
+            selectedFilters[category].push(value);
+        }
+        filterTools();
+    }
+
+    function filterTools() {
+        const filteredTools = tools.filter(tool => {
+            return (
+                (selectedFilters.scale.length === 0 || selectedFilters.scale.some(scale => tool.scale.includes(scale))) &&
+                (selectedFilters.phase.length === 0 || selectedFilters.phase.includes(tool.phase)) &&
+                (selectedFilters.group.length === 0 || selectedFilters.group.includes(tool.group)) &&
+                (selectedFilters.type.length === 0 || selectedFilters.type.includes(tool.type)) &&
+                (selectedFilters.useCase.length === 0 || selectedFilters.useCase.some(useCase => tool.useCase.includes(useCase)))
+            );
+        });
+
+        updateResultsSummary(filteredTools.length);
+        displayTools(filteredTools);
+    }
+
+    function updateResultsSummary(count) {
+        const resultsSummary = document.getElementById("results-summary");
+        if (count === 0) {
+            resultsSummary.textContent = "No results found. Please adjust your filters.";
+        } else {
+            resultsSummary.textContent = `Showing ${count} result${count > 1 ? 's' : ''}.`;
+        }
+    }
+
+    function displayTools(filteredTools) {
+        const toolsList = document.getElementById("tools-list");
+        toolsList.innerHTML = "";
+
+        filteredTools.forEach(tool => {
+            const toolCard = `
+                <div class="tool-item">
+                    <h3>${tool.name}</h3>
+                    <p class="description">${tool.description}...</p>
+                    <p class="keywords">Keywords: ${tool.useCase.join(", ")}</p>
+                    <a href="#" class="more-button">Learn More</a>
+                </div>
+            `;
+            toolsList.innerHTML += toolCard;
+        });
+    }
+
+    document.querySelectorAll(".phase-option.selectable, .group-option.selectable, .type-option.selectable, .use-case-option.selectable").forEach(option => {
+        option.addEventListener("click", function () {
+            const category = this.classList.contains("phase-option") ? "phase" :
+                             this.classList.contains("group-option") ? "group" :
+                             this.classList.contains("type-option") ? "type" : "useCase";
+            const value = this.dataset.value;
+
+            if (this.classList.contains("selected")) {
+                this.classList.remove("selected");
+                selectedFilters[category] = selectedFilters[category].filter(item => item !== value);
+            } else {
+                this.classList.add("selected");
+                selectedFilters[category].push(value);
+            }
+            filterTools();
+        });
+    });
+
+    document.querySelectorAll("input[name='scale']").forEach(checkbox => {
+        checkbox.addEventListener("change", (e) => updateFilters("scale", e.target.value));
+    });
+
+    document.querySelectorAll(".accordion-content label").forEach(label => {
+        label.addEventListener("click", function () {
+            const input = this.querySelector("input");
+            input.checked = !input.checked;
+            updateFilters("scale", input.value);
+        });
+    });
+
+    filterTools();
+</script>
+</body>
+</html

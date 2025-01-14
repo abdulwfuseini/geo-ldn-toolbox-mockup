@@ -1,0 +1,340 @@
+/* General styles for all pages */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Specific styles for Home page */
+/* Styles specific to the Home page */
+#home-page .content {
+    padding: 20px;
+    margin-top: 60px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    color: #333;
+}
+
+#home-page h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+#home-page p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+nav {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* Specific styles for Toolbox page */
+
+.sidebar {
+    background-color: #f1f1f1;
+    width: 300px;
+    height: 100vh;
+    position: fixed;
+    top: 50px;
+    left: 0;
+    padding: 20px;
+    overflow-y: auto;
+}
+.content {
+    margin-left: 320px;
+    padding: 20px;
+    padding-top: 70px;
+}
+.results-summary {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+    color: #333;
+}
+.accordion {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+.accordion-item {
+    border-bottom: 1px solid #ddd;
+}
+.accordion-header {
+    width: 100%;
+    padding: 10px 15px;
+    background-color: #f1f1f1;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    outline: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+.accordion-header:hover {
+    background-color: #e0e0e0;
+}
+.accordion-header .caret {
+    transition: transform 0.3s ease;
+}
+.accordion-header.active .caret {
+    transform: rotate(90deg);
+}
+.accordion-content {
+    display: none;
+    padding: 10px 15px;
+    background-color: #fafafa;
+}
+.accordion-content.show {
+    display: block;
+}
+.tools-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.tool-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.tool-item h3 {
+    margin: 10px 0;
+    font-size: 1.2em;
+}
+.tool-item p {
+    font-size: 0.9em;
+    color: #555;
+}
+.tool-item .description {
+    margin: 10px 0;
+    font-size: 0.9em;
+    color: #333;
+}
+.tool-item .keywords {
+    font-size: 0.8em;
+    font-weight: bold;
+    color: #666;
+}
+.tool-item .more-button {
+    margin-top: 10px;
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+.tool-item .more-button:hover {
+    background-color: #218838;
+}
+.no-results {
+    text-align: center;
+    font-size: 1.2em;
+    color: #555;
+    margin-top: 20px;
+}
+.selectable {
+    padding: 5px 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.selectable:hover {
+    background-color: #e0f7e9;
+}
+.selectable.selected {
+    background-color: #a8e6cf;
+    border-color: #56c596;
+}
+
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+nav a:hover {
+    text-decoration: underline;
+}
+/* Sidebar styles */
+.sidebar {
+    width: 300px;
+    height: calc(100vh - 50px); /* Full height minus the height of the fixed navbar */
+    background-color: #f1f1f1;
+    position: fixed;
+    top: 50px; /* Below the navbar */
+    left: 0;
+    overflow-y: auto; /* Enable scrolling for the sidebar */
+    z-index: 999;
+    padding: 20px;
+    box-sizing: border-box; /* Include padding in width/height calculations */
+}
+
+/* Sidebar content overflow fix */
+#sidebar-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Space between sections */
+}
+
+.sidebar.hidden {
+    transform: translateX(-100%);
+}
+#toggle-sidebar {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+.content {
+    margin-left: 300px;
+    padding: 20px;
+    padding-top: 70px;
+    transition: margin-left 0.3s ease;
+}
+.content.expanded {
+    margin-left: 0;
+}
+label {
+    cursor: pointer;
+}
+
+/* Add shake animation to the tool-item on hover */
+.tool-item {
+    transition: transform 0.2s ease; /* Smooth transition for other styles */
+}
+
+.tool-item:hover {
+    animation: shake 0.5s ease; /* Apply the shake animation on hover */
+}
+
+/* Define the shake keyframes */
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+
+
+
+/* Specific styles for Help page */
+/* Styles specific to the Help page */
+/* Styles specific to the Home and Help pages */
+#home-page .content,
+#help-page .container {
+    padding: 20px;
+    margin-top: 60px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    color: #333;
+}
+
+#home-page h1,
+#help-page h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+}
+
+#home-page p,
+#help-page p {
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    text-align: justify;
+}
+
+#help-page ul {
+    list-style-type: disc;
+    margin: 20px 0;
+    padding-left: 40px;
+}
+
+#help-page ul li {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+/* Navigation bar (same for all pages) */
+nav {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
